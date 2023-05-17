@@ -3,6 +3,12 @@ Rails.application.routes.draw do
   get 'dashboard/properties'
   get 'dashboard/reports'
   resources :properties
+
+  # devise scope
+  devise_scope :account do
+    get 'accounts/sign_out' => "devise/sessions#destroy"
+  end
+  
   devise_for :accounts
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   
