@@ -1,7 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-   
-
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+  <%= link_to "Property Finder", root_path, class:"navbar-brand" %>
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <% if account_signed_in? %>
