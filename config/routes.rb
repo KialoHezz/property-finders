@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'dashboard/index'
+  get "dashboard" => 'dashboard#index', as: :dashboard
+
   get 'dashboard/properties'
   get 'dashboard/reports'
   resources :properties
@@ -8,7 +9,7 @@ Rails.application.routes.draw do
   devise_scope :account do
     get 'accounts/sign_out' => "devise/sessions#destroy"
   end
-  
+
   devise_for :accounts
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   
