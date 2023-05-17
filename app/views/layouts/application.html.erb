@@ -9,14 +9,19 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-
-  </head>
-
-  <body id="<%= controller.controller_name %>" class="<%= controller.action_name %>" >
-    <% if ["public", "devise", "sessions"].include?(controller.controller_name) %>
-      <header>
-        <%= render "layouts/nav/public" %>
-      </header>
+    
+    </head>
+    
+    <body id="<%= controller.controller_name %>" class="<%= controller.action_name %>" >
+      <% if ["public", "devise", "sessions"].include?(controller.controller_name) %>
+        <header>
+          <%= render "layouts/nav/public" %>
+          </header>
+          <div id="notifications">
+            <%= notice %>
+            <%= alert %>
+            <%= notice %>
+          </div>
       <%= yield %>
     <% else %>
       <%= render "layouts/nav/dashboard" %>
@@ -30,9 +35,6 @@
       </div>
     <% end %>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <p style="color: green"><%= notice %></p>
 
         
     
