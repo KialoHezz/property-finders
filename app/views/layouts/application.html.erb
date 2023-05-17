@@ -13,7 +13,7 @@
   </head>
 
   <body>
-    <% if ["public", "devise"].include?(controller.controller_name) %>
+    <% if ["public", "devise", "sessions"].include?(controller.controller_name) %>
       <header>
         <%= render "layouts/nav/public" %>
       </header>
