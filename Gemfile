@@ -15,6 +15,14 @@ gem "sqlite3", "~> 1.4"
 # authorization
 gem "devise"
 
+# Img uploads to Amazon S3
+gem "carrierwave", "0.10.0"
+gem "fog", "~> 1.37.0"
+
+
+# Img resizing
+gem "mini_magick"
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
