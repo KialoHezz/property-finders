@@ -13,7 +13,8 @@
     </head>
     
     <body id="<%= controller.controller_name %>" class="<%= controller.action_name %>" >
-      <% if ["public", "devise", "sessions"].include?(controller.controller_name) %>
+      <% if @show_sidebar.nil? %>
+
         <header>
           <%= render "layouts/nav/public" %>
           </header>
