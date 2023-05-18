@@ -5,4 +5,9 @@ module PropertiesHelper
         # return a image tag
         image_tag img, class: "property-thumb"
     end
+
+    def property_photo_url property
+        # return a url instead of image tage
+        property.photo.present? ? property.photo.url : asset_url("placeholder.png") 
+    end
 end
