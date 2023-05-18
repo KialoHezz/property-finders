@@ -24,7 +24,7 @@
             </div>
             <div class="col-4">
               <p class="m-0"><strong>Parking<strong></p>
-              <span class="lead"><%#= @property.parking_spaces %><span>
+              <span class="lead"><%= @property.parking_spaces %><span>
             </div>
           </div>          
         </div>
@@ -45,8 +45,9 @@
             
             <!-- wrapper -->
             <div id="prop-details" class="">
-              <%#= simple_format @property.details %>
+              <%= simple_format @property.details %>
             </div>
+            
             <button class="btn btn-outline-info mt-3" id="details">Show More</button>
             <p class="mt-5"> *This rate based on a 30year morgage, after paying an intial 10% down payment. Shorter term morgages would require a higher monthly repayment </p>
           </div> 
@@ -54,7 +55,6 @@
       </div>
       <div class="col-4">
        <%= render "properties/agent_details" %>
-       <%#= render "properties/agent_details" %>
      </div>
     </div>
   </div>
