@@ -8,5 +8,9 @@ const details= document.getElementById("details");
 details.addEventListener("click", () =>{
     const propDetails = document.getElementById("prop-details");
     
-    console.log(propDetails.classList.toggle("open"));
+    propDetails.classList.toggle("open").innerText ="Show Less";
+    
+    // const btnShow = document.getElementById("details");
+    // btnShow.innerText = "Show less"
+    
 });
