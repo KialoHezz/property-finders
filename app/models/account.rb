@@ -13,7 +13,4 @@ class Account < ApplicationRecord
     "#{first_name}  #{last_name}"
   end
 
-  def company
-    "TestCompany"
-  end
 end
