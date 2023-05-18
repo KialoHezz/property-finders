@@ -10,7 +10,13 @@
       <div class="row">
         <div class="col-lg-6">
           <p class="mb-0"><%= @property.address %></p>
-          <p class="h2 mb-3"><%= @property.price > 0 ? number_to_currency(@property.price, precision: 0) : "For Sale" %></p>
+          <p class="h2 mb-3">
+            <% if @property.for_sale? %>
+              <%= @property.price > 0 ? number_to_currency(@property.price, precision: 0) : "For Sale" %>
+            <% else %>
+              <%= @property.price > 0 ? number_to_currency(@property.price, precision: 0) : "For Rent" %> / month
+            <% end %>
+          </p>
         </div>
         <div class="col-lg-6 text-center">
           <div class="row mr-lg-3 mt-sm-3 bg-light p-3">
@@ -32,7 +38,9 @@
       </div>
       <div class="row  border-top border-bottom mt-5 mb-5 pt-4 pb-4">
         <div class="col-6">
-        <strong><%= link_to "Est. Monthly Repayments of #{number_to_currency((@property.price - (@property.price * 0.1)) / 360, precision: 0) } *", "#", class:"text-success" %></strong>
+        <% if @property.for_sale? %>
+          <strong><%= link_to "Est. Monthly Repayments of #{number_to_currency((@property.price - (@property.price * 0.1)) / 360, precision: 0) } *", "#", class:"text-success" %></strong>
+        <% end %>
         </div>
         <div class="col-6 text-right">
           <!--This will point to a new page -->
