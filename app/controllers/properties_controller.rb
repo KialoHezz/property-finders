@@ -12,6 +12,8 @@ class PropertiesController < ApplicationController
   # GET /properties/1 or /properties/1.json
   def show
     @agent = @property.account
+    # pass in array properties
+    @agent_properties = Property.where(account_id: @agent.id).where.not(id: @property.id)
   end
 
   # GET /properties/new
