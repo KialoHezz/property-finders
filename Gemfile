@@ -40,6 +40,12 @@ gem "jbuilder"
 
 gem 'simple_format', '~> 0.0.2'
 
+gem 'font-awesome-sass', "~> 6.4.0"
+
+# gem 'jquery-rails'
+
+gem 'jquery-rails-cdn'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

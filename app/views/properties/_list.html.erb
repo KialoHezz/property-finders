@@ -8,9 +8,9 @@
 
                 <div class="property-summary p-3">
                     <h3 class="h5"><%= link_to property.name,  property_path(property), class:"text-dark" %></h3>
-                    <span class="mr-2 text-muted ml-1"><i data-feather="u">bed</i></span> <%= property.rooms %>
-                    <span class="mr-2 text-muted ml-1"><i data-feather="fe:car">bath</i></span> <%= property.bathrooms %>
-                    <span class="mr-2 text-muted ml-1"><i data-feather="fe:car">car</i></span> <%= property.parking_spaces %>
+                    <span class="mr-2 ml-1"><%= icon('fa-solid', 'bed')%></span> <%= property.rooms %>
+                    <span class="mr-2 ml-1"><%= icon('fa-solid', 'bath')%></span> <%= property.bathrooms %>
+                    <span class="mr-2 ml-1"><%= icon('fa-solid', 'car')%></span> <%= property.parking_spaces %>
                     
                     <p class="mt-2" ><%= property.address %></p>
                 </div>
