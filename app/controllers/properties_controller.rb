@@ -77,7 +77,8 @@ class PropertiesController < ApplicationController
     logger.debug "last Name #{last_name}"
     logger.debug " Email #{email }"
     logger.debug "Message #{message}"
-
+    # new contact mailer
+    ContactMailer.email_agent( agent_id, first_name, last_name, email, message).deliver_now
     # response to script
     response_to do|format|
       format.json { head :no_content }
