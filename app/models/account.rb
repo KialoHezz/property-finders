@@ -7,6 +7,8 @@ class Account < ApplicationRecord
   has_many :properties
 
   mount_uploader :image, ProfileUploader
+  mount_uploader :cover_image, ProfileUploader
+
 
 
   def full_name
