@@ -7,12 +7,27 @@
           <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more »</a></p>
         </div>
     </div>
+
     <section id="latest-properties mb-5">
         <div class="container">
             <div class="row">
                  <%= render "properties/list", properties: @properties %>
             </div>
         </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="latest-posts mb-5">
+        <div class="container">
+            <div class="row ">
+                <div class="col">
+                    <h3 class="mb-3">Lates News</h3>
+                </div>
+            </div>
+            <div class="row">
+                <%= render "posts/list", posts: @posts %>
+            </div>
+         </div>
     </section>
 
     <div class="container">
