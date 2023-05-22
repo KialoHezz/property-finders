@@ -8,7 +8,7 @@ class AdminController < ApplicationController
     def can_access?
       @show_sidebar = true
         unless current_account.admin?
-            redirect_to root_url 
+            redirect_to root_url and return
         end
     end
 end
