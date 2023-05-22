@@ -7,8 +7,9 @@ class AdminController < ApplicationController
 
     def can_access?
       @show_sidebar = true
+
         unless current_account.admin?
-            redirect_to root_url and return
+            redirect_to root_url, flash: { danger: "You don't have a access to view this page"} and return
         end
     end
 end

@@ -1,24 +1,21 @@
 Rails.application.routes.draw do
-  resources :posts
-  # admin route
-  get "/accounts" => 'admin#accounts', as: :accounts
-
-
+  devise_for :accounts
   
-  get "/dashboard" => 'dashboard#index', as: :dashboard
-  get "/profile/:id" => 'dashboard#profile', as: :profile
-  get 'dashboard/properties'
-  get 'dashboard/reports'
+  resources :posts
   resources :properties
-
+  
+  # admin routes
+  get "/accounts" => 'admin#accounts', as: :accounts
+  
+  get "dashboard" => 'dashboard#index', as: :dashboard
+  get "/profile/:id" => 'dashboard#profile', as: :profile
+  post "/agent/message" => "properties#email_agent", as: :email_agent
   
   # devise scope
   devise_scope :account do
     get 'accounts/sign_out' => "devise/sessions#destroy"
   end
-  devise_for :accounts
 
-  post "/agent/message" => "properties#email_agent", as: :email_agent
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   
   # Defines the root path route ("/")

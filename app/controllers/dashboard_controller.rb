@@ -15,6 +15,7 @@ class DashboardController < ApplicationController
   end
 
   private
+  
   def set_sidebar
     @show_sidebar = true if account_signed_in?
   end
