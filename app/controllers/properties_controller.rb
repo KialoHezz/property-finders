@@ -2,6 +2,7 @@ class PropertiesController < ApplicationController
   before_action :set_property, only: %i[ show edit update destroy ]
   before_action :authenticate_account!, only: [:new, :create, :destroy]
   before_action :set_sidebar, except: [:show]
+  before_action :correct_account, only: [:edit, :update, :destroy]
 
 
   # GET /properties or /properties.json
@@ -18,7 +19,8 @@ class PropertiesController < ApplicationController
 
   # GET /properties/new
   def new
-    @property = Property.new
+    # @property = Property.new
+    @property = current_account.properties.build
   end
 
   # GET /properties/1/edit
@@ -27,7 +29,8 @@ class PropertiesController < ApplicationController
 
   # POST /properties or /properties.json
   def create
-    @property = Property.new(property_params)
+    # @property = Property.new(property_params)
+    @property = current_account.properties.build(property_params)
     @property.account_id = current_account.id
 
 
@@ -84,6 +87,14 @@ class PropertiesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+
+  def correct_account 
+    @property = current_account.properties.find_by(id: params[:id])
+
+    redirect_to properties_path, notice: "Not Authorized" if @properties.nil?
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -97,6 +108,6 @@ class PropertiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def property_params
-      params.require(:property).permit(:name, :address, :price, :rooms, :bathrooms, :parking_spaces, :for_sale, :status, :available_date, :details, :photo, :photo_cache)
+      params.require(:property).permit(:name, :address, :price, :rooms, :bathrooms, :parking_spaces, :for_sale, :status, :available_date, :details, :photo, :photo_cache, :account_id)
     end
 end
