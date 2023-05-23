@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy ]
   # Add side bar
   before_action :can_access?, except: [:show, :latest]
+  before_action :correct_account, only: [:edit, :update, :destroy]
 
 
   # GET /posts or /posts.json
@@ -20,7 +21,7 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @post = Post.new
+    @post = current_account.posts.build
   end
 
   # GET /posts/1/edit
@@ -29,7 +30,8 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
-    @post = Post.new(post_params)
+    # @post = Post.new(post_params)
+    @post = current_account.posts.build(post_params)
 
     respond_to do |format|
       if @post.save
@@ -61,6 +63,13 @@ class PostsController < ApplicationController
     end
   end
 
+  def correct_account
+    @post = current_account.posts.find_by(id: params[:id])
+
+    redirect_to posts_path, notice: "Not Authorized" if @post.nil? 
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
@@ -77,6 +86,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :url, :summary, :body, :image, :active)
+      params.require(:post).permit(:title, :url, :summary, :body, :image, :active, :account_id)
     end
 end
